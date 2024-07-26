@@ -22,4 +22,8 @@ impl Queue {
     pub async fn dequeue(&self) -> Option<Vec<u8>> {
         self.queue.lock().await.pop()
     }
+
+    pub async fn length(&self) -> usize {
+        self.queue.lock().await.len()
+    }
 }

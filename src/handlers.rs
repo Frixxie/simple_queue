@@ -18,3 +18,7 @@ pub async fn pop_from_queue(State(queue): State<Arc<Queue>>) -> impl IntoRespons
         None => "Queue is empty".to_string().into_bytes(),
     }
 }
+
+pub async fn get_queue_length(State(queue): State<Arc<Queue>>) -> impl IntoResponse {
+    format!("{}", queue.length().await)
+}
